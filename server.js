@@ -10,11 +10,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 👉 Serve frontend
-app.use(express.static('.'));
+// // 👉 Serve frontend
+// app.use(express.static('.'));
 
+// app.get('/', (req, res) => {
+//   res.sendFile(path.resolve('index.html'));
+// });
+
+// ✅ Serve static files
+app.use(express.static(path.join(process.cwd())));
+
+// ✅ ROOT ROUTE (CRITICAL FIX)
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve('index.html'));
+  res.sendFile(path.join(process.cwd(), 'index.html'));
 });
 
 // 🔐 Use env instead of hardcoding
