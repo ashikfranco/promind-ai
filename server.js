@@ -28,6 +28,8 @@ app.get('/', (req, res) => {
 // 🔐 Use env instead of hardcoding
 const API_KEY = process.env.ANTHROPIC_API_KEY;
 
+
+
 app.post('/api/ai', async (req, res) => {
   try {
     console.log("Incoming request:", req.body);

@@ -413,7 +413,11 @@ async function callClaude(messages, systemPrompt, maxTokens = 1200) {
   try {
     console.log("🚀 Calling backend...");
 
-    const res = await fetch('api/ai', {
+    const API_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:3000/api/ai'
+  : '/api/ai';
+
+    const res = await fetch(API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
