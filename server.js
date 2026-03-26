@@ -13,6 +13,10 @@ app.use(express.json());
 // 👉 Serve frontend
 app.use(express.static('.'));
 
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve('index.html'));
+});
+
 // 🔐 Use env instead of hardcoding
 const API_KEY = process.env.ANTHROPIC_API_KEY;
 
